@@ -1,0 +1,18 @@
+{
+ "run": "fixes_test",
+ "role": "guest",
+ "rules": [
+  "secret_word",
+  "personal_data",
+  "advice",
+  "unsent_citation"
+ ],
+ "questions": 75,
+ "blocked": 3,
+ "per_100": 4,
+ "ids": [
+  "00757",
+  "00723",
+  "01107"
+ ]
+}

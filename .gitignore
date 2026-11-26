@@ -1,0 +1,34 @@
+# Secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Never push: licence or size
+data/pdfs/
+data/financebench_open_source.jsonl
+data/pieces/
+data/cache/
+data/ledger.json
+
+data/logs/
+data/fake_pdfs/*.pdf
+
+# Temporary check from step 1.0
+day1_check.py
+
+# Backups made by apply_fixes.py (python apply_fixes.py --undo puts everything back)
+.fixes_backup/
+
+# Backups made by apply_upgrades.py (python apply_upgrades.py --undo puts everything back)
+.upgrades_backup/
+
+results/runs/
+results/attacks/
+data/cases/

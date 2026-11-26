@@ -1,0 +1,13 @@
+python-dotenv
+anthropic
+qdrant-client
+pymupdf
+sentence-transformers
+
+pytest
+streamlit
+presidio-analyzer
+spacy
+
+httpx
+langsmith

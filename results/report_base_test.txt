@@ -1,0 +1,65 @@
+REPORT base / test: 75 questions scored (2026-11-25T16:08)
+Settings: filter company+year | pieces 5 | collection filings_v1 | prompt bot_v2 | bot claude-haiku-5-5 | judge claude
+
+SCORES (how many fail out of every 100 questions; the range is what this many questions can support)
+  answer is correct (judge)                   35 fail   (range 25 to 46)   49 of 75 ok
+  numbers match the reference                 37 fail   (range 25 to 51)   31 of 49 ok
+  right page among the pieces                 24 fail   (range 16 to 35)   57 of 75 ok
+  every claim is in the pieces (judge)        15 fail   (range 8 to 24)   64 of 75 ok
+  citations are real                           4 fail   (range 1 to 11)   72 of 75 ok
+  a citation is an evidence page              31 fail   (range 21 to 42)   49 of 71 ok
+  reply in the agreed format                   0 fail   (range 0 to 5)   75 of 75 ok
+  answer is short                              1 fail   (range 0 to 7)   74 of 75 ok
+
+WHERE THE ANSWERS BREAK (search found the page x answer right)
+  page found yes / answer right yes:  43 of 75   works
+  page found yes / answer right no :  14 of 75   bot misread the page: fix the prompt, table reading, number rules
+  page found no  / answer right yes:   6 of 75   lucky, or the answer is on another page: check the evidence by hand
+  page found no  / answer right no :  12 of 75   search failed: fix pieces, filter, settings
+
+BY SLICE (answer right, and right page found, out of every 100; groups under 4 are rough)
+  by company:
+    American Express                     7 questions   right  57   page found  57
+    PepsiCo                              7 questions   right  71   page found  86
+    AMD                                  6 questions   right  50   page found  67
+    Boeing                               6 questions   right  83   page found  67
+    Ulta Beauty                          6 questions   right  50   page found  83
+    Best Buy                             5 questions   right  80   page found  80
+    Johnson & Johnson                    5 questions   right 100   page found 100
+    Pfizer                               5 questions   right  60   page found  40
+    Amcor                                4 questions   right  50   page found  75
+    Verizon                              4 questions   right 100   page found  75
+    CVS Health                           3 questions   right  33   page found 100   (rough)
+    Adobe                                2 questions   right  50   page found 100   (rough)
+    Amazon                               2 questions   right  50   page found 100   (rough)
+    Corning                              2 questions   right  50   page found  50   (rough)
+    General Mills                        2 questions   right 100   page found 100   (rough)
+    JPMorgan                             2 questions   right  50   page found  50   (rough)
+    MGM Resorts                          2 questions   right   0   page found  50   (rough)
+    AES Corporation                      1 questions   right   0   page found 100   (rough)
+    Costco                               1 questions   right 100   page found 100   (rough)
+    Lockheed Martin                      1 questions   right 100   page found 100   (rough)
+    Microsoft                            1 questions   right 100   page found 100   (rough)
+    Netflix                              1 questions   right 100   page found 100   (rough)
+  by document type:
+    10K                                 56 questions   right  71   page found  79
+    EARNINGS                             9 questions   right  33   page found  67
+    10Q                                  6 questions   right  33   page found  50
+    8K                                   4 questions   right 100   page found 100
+  by question type:
+    domain-relevant                     33 questions   right  64   page found  79
+    novel-generated                     31 questions   right  61   page found  65
+    metrics-generated                   11 questions   right  82   page found 100
+  by reasoning type:
+    Not labelled                        31 questions   right  61   page found  65
+    Numerical reasoning                 20 questions   right  75   page found  90
+    Information extraction              16 questions   right  56   page found  75
+    Logical reasoning                    8 questions   right  75   page found  88
+
+YOUR FAILURE TYPES (results\failure_notes.md)
+  none yet. Read every wrong answer and write one line each, for example:  - 00012 [search missed] note
+
+COST: 9.391 cents in all (bot 4.476, judge 4.914); 0.1252 cents and 3.0 s per question
+
+PASS LINES (a score in points out of 100 that must be reached)
+  not set yet. They are set in step 2.9, at the baseline minus 5 points, never at a number you hope for.

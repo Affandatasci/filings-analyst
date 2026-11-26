@@ -1,0 +1,236 @@
+{
+ "version": 1,
+ "tag": "fixes",
+ "split": "test",
+ "created": "2026-11-25T22:23:11",
+ "partial": false,
+ "questions": 75,
+ "errors": 0,
+ "cost_cents": 10.10704,
+ "settings": {
+  "filter": "company+year",
+  "k": 5,
+  "collection": "filings_v1",
+  "prompt": "bot_v3",
+  "claude_model": "claude-haiku-5-5",
+  "embed_model": "BAAI/bge-small-en-v1.5",
+  "judge": "claude"
+ },
+ "scores": {
+  "correct": {
+   "good": 53,
+   "of": 75,
+   "points": 70.7
+  },
+  "number_match": {
+   "good": 34,
+   "of": 49,
+   "points": 69.4
+  },
+  "found_page": {
+   "good": 57,
+   "of": 75,
+   "points": 76.0
+  },
+  "supported": {
+   "good": 74,
+   "of": 75,
+   "points": 98.7
+  },
+  "citation_valid": {
+   "good": 72,
+   "of": 75,
+   "points": 96.0
+  },
+  "citation_hit": {
+   "good": 52,
+   "of": 73,
+   "points": 71.2
+  },
+  "json_shape": {
+   "good": 75,
+   "of": 75,
+   "points": 100.0
+  },
+  "length": {
+   "good": 74,
+   "of": 75,
+   "points": 98.7
+  }
+ },
+ "slices": {
+  "company": {
+   "AES Corporation": {
+    "n": 1,
+    "right": 0.0,
+    "found_page": 100.0
+   },
+   "AMD": {
+    "n": 6,
+    "right": 66.7,
+    "found_page": 66.7
+   },
+   "Adobe": {
+    "n": 2,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "Amazon": {
+    "n": 2,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "Amcor": {
+    "n": 4,
+    "right": 75.0,
+    "found_page": 75.0
+   },
+   "American Express": {
+    "n": 7,
+    "right": 71.4,
+    "found_page": 57.1
+   },
+   "Best Buy": {
+    "n": 5,
+    "right": 60.0,
+    "found_page": 80.0
+   },
+   "Boeing": {
+    "n": 6,
+    "right": 66.7,
+    "found_page": 66.7
+   },
+   "CVS Health": {
+    "n": 3,
+    "right": 33.3,
+    "found_page": 100.0
+   },
+   "Corning": {
+    "n": 2,
+    "right": 50.0,
+    "found_page": 50.0
+   },
+   "Costco": {
+    "n": 1,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "General Mills": {
+    "n": 2,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "JPMorgan": {
+    "n": 2,
+    "right": 50.0,
+    "found_page": 50.0
+   },
+   "Johnson & Johnson": {
+    "n": 5,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "Lockheed Martin": {
+    "n": 1,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "MGM Resorts": {
+    "n": 2,
+    "right": 0.0,
+    "found_page": 50.0
+   },
+   "Microsoft": {
+    "n": 1,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "Netflix": {
+    "n": 1,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "PepsiCo": {
+    "n": 7,
+    "right": 85.7,
+    "found_page": 85.7
+   },
+   "Pfizer": {
+    "n": 5,
+    "right": 60.0,
+    "found_page": 40.0
+   },
+   "Ulta Beauty": {
+    "n": 6,
+    "right": 66.7,
+    "found_page": 83.3
+   },
+   "Verizon": {
+    "n": 4,
+    "right": 75.0,
+    "found_page": 75.0
+   }
+  },
+  "doc_type": {
+   "10K": {
+    "n": 56,
+    "right": 78.6,
+    "found_page": 78.6
+   },
+   "10Q": {
+    "n": 6,
+    "right": 16.7,
+    "found_page": 50.0
+   },
+   "8K": {
+    "n": 4,
+    "right": 100.0,
+    "found_page": 100.0
+   },
+   "EARNINGS": {
+    "n": 9,
+    "right": 44.4,
+    "found_page": 66.7
+   }
+  },
+  "question_type": {
+   "domain-relevant": {
+    "n": 33,
+    "right": 72.7,
+    "found_page": 78.8
+   },
+   "metrics-generated": {
+    "n": 11,
+    "right": 90.9,
+    "found_page": 100.0
+   },
+   "novel-generated": {
+    "n": 31,
+    "right": 61.3,
+    "found_page": 64.5
+   }
+  },
+  "reasoning_type": {
+   "Information extraction": {
+    "n": 16,
+    "right": 68.8,
+    "found_page": 75.0
+   },
+   "Logical reasoning": {
+    "n": 8,
+    "right": 62.5,
+    "found_page": 87.5
+   },
+   "Not labelled": {
+    "n": 31,
+    "right": 61.3,
+    "found_page": 64.5
+   },
+   "Numerical reasoning": {
+    "n": 20,
+    "right": 90.0,
+    "found_page": 90.0
+   }
+  }
+ }
+}

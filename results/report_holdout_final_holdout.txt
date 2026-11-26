@@ -1,0 +1,62 @@
+REPORT holdout_final / holdout: 18 questions scored (2026-11-26T13:46)
+Settings: filter company+year | pieces 5 | collection filings_v1 | prompt bot_v3 | bot claude-haiku-5-5 | judge claude
+
+SCORES (how many fail out of every 100 questions; the range is what this many questions can support)
+  answer is correct (judge)                   33 fail   (range 16 to 56)   12 of 18 ok
+  numbers match the reference                 40 fail   (range 20 to 64)   9 of 15 ok
+  right page among the pieces                 44 fail   (range 25 to 66)   10 of 18 ok
+  every claim is in the pieces (judge)         6 fail   (range 1 to 26)   17 of 18 ok
+  citations are real                          11 fail   (range 3 to 33)   16 of 18 ok
+  a citation is an evidence page              56 fail   (range 34 to 75)   8 of 18 ok
+  reply in the agreed format                   0 fail   (range 0 to 18)   18 of 18 ok
+  answer is short                              0 fail   (range 0 to 18)   18 of 18 ok
+
+WHERE THE ANSWERS BREAK (search found the page x answer right)
+  page found yes / answer right yes:   8 of 18   works
+  page found yes / answer right no :   2 of 18   bot misread the page: fix the prompt, table reading, number rules
+  page found no  / answer right yes:   4 of 18   lucky, or the answer is on another page: check the evidence by hand
+  page found no  / answer right no :   4 of 18   search failed: fix pieces, filter, settings
+
+BY SLICE (answer right, and right page found, out of every 100; groups under 4 are rough)
+  by company:
+    Johnson & Johnson                    3 questions   right  33   page found   0   (rough)
+    AES Corporation                      2 questions   right  50   page found 100   (rough)
+    Amcor                                2 questions   right  50   page found 100   (rough)
+    Block                                2 questions   right 100   page found 100   (rough)
+    PepsiCo                              2 questions   right  50   page found  50   (rough)
+    AMD                                  1 questions   right 100   page found   0   (rough)
+    Best Buy                             1 questions   right 100   page found   0   (rough)
+    Boeing                               1 questions   right 100   page found 100   (rough)
+    MGM Resorts                          1 questions   right 100   page found   0   (rough)
+    Nike                                 1 questions   right 100   page found 100   (rough)
+    Pfizer                               1 questions   right   0   page found   0   (rough)
+    Verizon                              1 questions   right 100   page found 100   (rough)
+  by document type:
+    10K                                 11 questions   right  64   page found  73
+    EARNINGS                             4 questions   right  75   page found  25
+    10Q                                  2 questions   right  50   page found   0   (rough)
+    8K                                   1 questions   right 100   page found 100   (rough)
+  by question type:
+    novel-generated                      8 questions   right  75   page found  38
+    domain-relevant                      7 questions   right  43   page found  57
+    metrics-generated                    3 questions   right 100   page found 100   (rough)
+  by reasoning type:
+    Not labelled                         8 questions   right  75   page found  38
+    Information extraction               4 questions   right  75   page found  50
+    Numerical reasoning                  4 questions   right  50   page found 100
+    Logical reasoning                    2 questions   right  50   page found  50   (rough)
+
+YOUR FAILURE TYPES (results\failure_notes.md)
+  none yet. Read every wrong answer and write one line each, for example:  - 00012 [search missed] note
+
+COST: 2.696 cents in all (bot 1.476, judge 1.220); 0.1498 cents and 7.2 s per question
+
+PASS LINES (a score in points out of 100 that must be reached)
+  correct           66.7  line 65.7  ok
+  number_match      60.0  line 64.4  BELOW
+  found_page        55.6  line 71.0  BELOW
+  supported         94.4  line 93.7  ok
+  citation_valid    88.9  line 91.0  BELOW
+  citation_hit      44.4  line 66.2  BELOW
+  json_shape       100.0  line 95.0  ok
+  length           100.0  line 93.7  ok

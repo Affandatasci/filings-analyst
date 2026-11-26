@@ -1,0 +1,46 @@
+REPORT near / test: 7 questions scored (2026-11-25T22:25)
+Settings: filter company+year | pieces 5 | collection filings_v1 | prompt bot_v3 | bot claude-haiku-5-5 | judge claude
+NOT A FULL RUN: only 7 of the questions of this split were run, so these scores are rough.
+
+SCORES (how many fail out of every 100 questions; the range is what this many questions can support)
+  answer is correct (judge)                   14 fail   (range 3 to 51)   6 of 7 ok
+  numbers match the reference                 25 fail   (range 5 to 70)   3 of 4 ok
+  right page among the pieces                 14 fail   (range 3 to 51)   6 of 7 ok
+  every claim is in the pieces (judge)        14 fail   (range 3 to 51)   6 of 7 ok
+  citations are real                           0 fail   (range 0 to 35)   7 of 7 ok
+  a citation is an evidence page              14 fail   (range 3 to 51)   6 of 7 ok
+  reply in the agreed format                   0 fail   (range 0 to 35)   7 of 7 ok
+  answer is short                              0 fail   (range 0 to 35)   7 of 7 ok
+
+WHERE THE ANSWERS BREAK (search found the page x answer right)
+  page found yes / answer right yes:   5 of 7   works
+  page found yes / answer right no :   1 of 7   bot misread the page: fix the prompt, table reading, number rules
+  page found no  / answer right yes:   1 of 7   lucky, or the answer is on another page: check the evidence by hand
+  page found no  / answer right no :   0 of 7   search failed: fix pieces, filter, settings
+
+BY SLICE (answer right, and right page found, out of every 100; groups under 4 are rough)
+  by company:
+    Pfizer                               2 questions   right 100   page found 100   (rough)
+    Amcor                                1 questions   right 100   page found 100   (rough)
+    Boeing                               1 questions   right 100   page found 100   (rough)
+    MGM Resorts                          1 questions   right   0   page found 100   (rough)
+    PepsiCo                              1 questions   right 100   page found 100   (rough)
+    Verizon                              1 questions   right 100   page found   0   (rough)
+  by document type:
+    10K                                  4 questions   right 100   page found  75
+    EARNINGS                             2 questions   right  50   page found 100   (rough)
+    10Q                                  1 questions   right 100   page found 100   (rough)
+  by question type:
+    novel-generated                      6 questions   right  83   page found  83
+    domain-relevant                      1 questions   right 100   page found 100   (rough)
+  by reasoning type:
+    Not labelled                         6 questions   right  83   page found  83
+    Information extraction               1 questions   right 100   page found 100   (rough)
+
+YOUR FAILURE TYPES (results\failure_notes.md)
+  none yet. Read every wrong answer and write one line each, for example:  - 00012 [search missed] note
+
+COST: 1.962 cents in all (bot 0.992, judge 0.970); 0.2803 cents and 12.4 s per question
+
+PASS LINES (a score in points out of 100 that must be reached)
+  not set yet. They are set in step 2.9, at the baseline minus 5 points, never at a number you hope for.

@@ -1,0 +1,54 @@
+# Step 4.6: the push check.
+#   On every push and pull request: the tests and the score check. It installs only light libraries and never calls Claude.
+#   Every Monday: one ping to Qdrant and one to Supabase, so the free projects do not go to sleep.
+#   By hand: GitHub, Actions tab, checks, Run workflow. That runs the two pings once.
+# The keys for the pings are GitHub secrets, set once: Settings, Secrets and variables, Actions, New repository secret
+# (QDRANT_URL, QDRANT_API_KEY, SUPABASE_URL, SUPABASE_KEY). They are never written in this file.
+name: checks
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "23 4 * * 1"
+  workflow_dispatch:
+
+jobs:
+  tests:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install the light libraries only
+        run: pip install pytest python-dotenv qdrant-client pymupdf numpy httpx anthropic
+      - name: Tests (heavy libraries are skipped)
+        run: python -m pytest -q
+      - name: Score check (reads results/baseline_scores.json and results/latest_scores.json)
+        run: python scripts/check_scores.py
+
+  ping:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      QDRANT_URL: ${{ secrets.QDRANT_URL }}
+      QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+    steps:
+      - name: Ping Qdrant
+        if: env.QDRANT_URL != ''
+        run: |
+          curl --fail --silent --show-error --max-time 30 -H "api-key: $QDRANT_API_KEY" "$QDRANT_URL/collections" > /dev/null
+      - name: Ping Supabase
+        if: env.SUPABASE_URL != ''
+        run: |
+          curl --fail --silent --show-error --max-time 30 -H "apikey: $SUPABASE_KEY" -H "Authorization: Bearer $SUPABASE_KEY" "$SUPABASE_URL/rest/v1/requests?select=id&limit=1" > /dev/null
+      - name: Say what was skipped
+        if: env.QDRANT_URL == '' || env.SUPABASE_URL == ''
+        run: |
+          echo "A secret is not set, so one ping was skipped. Add it in Settings, Secrets and variables, Actions."

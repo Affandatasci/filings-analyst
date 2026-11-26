@@ -1,0 +1,41 @@
+REPORT trace3_agent / practice: 5 questions scored (2026-11-25T15:37)
+Settings: filter company+year | pieces 5 | collection filings_v1 | prompt bot_v2 | bot claude-haiku-5-5 | judge claude
+NOT A FULL RUN: only 5 of the questions of this split were run, so these scores are rough.
+
+SCORES (how many fail out of every 100 questions; the range is what this many questions can support)
+  answer is correct (judge)                   40 fail   (range 12 to 77)   3 of 5 ok
+  numbers match the reference                 40 fail   (range 12 to 77)   3 of 5 ok
+  right page among the pieces                  0 fail   (range 0 to 43)   5 of 5 ok
+  every claim is in the pieces (judge)        60 fail   (range 23 to 88)   2 of 5 ok
+  citations are real                           0 fail   (range 0 to 43)   5 of 5 ok
+  a citation is an evidence page               0 fail   (range 0 to 49)   4 of 4 ok
+  reply in the agreed format                  20 fail   (range 4 to 62)   4 of 5 ok
+  answer is short                             40 fail   (range 12 to 77)   3 of 5 ok
+
+WHERE THE ANSWERS BREAK (search found the page x answer right)
+  page found yes / answer right yes:   3 of 5   works
+  page found yes / answer right no :   2 of 5   bot misread the page: fix the prompt, table reading, number rules
+  page found no  / answer right yes:   0 of 5   lucky, or the answer is on another page: check the evidence by hand
+  page found no  / answer right no :   0 of 5   search failed: fix pieces, filter, settings
+
+BY SLICE (answer right, and right page found, out of every 100; groups under 4 are rough)
+  by company:
+    3M                                   5 questions   right  60   page found 100
+  by document type:
+    10K                                  5 questions   right  60   page found 100
+  by question type:
+    domain-relevant                      2 questions   right   0   page found 100   (rough)
+    metrics-generated                    2 questions   right 100   page found 100   (rough)
+    novel-generated                      1 questions   right 100   page found 100   (rough)
+  by reasoning type:
+    Information extraction               2 questions   right 100   page found 100   (rough)
+    Logical reasoning                    2 questions   right   0   page found 100   (rough)
+    Not labelled                         1 questions   right 100   page found 100   (rough)
+
+YOUR FAILURE TYPES (results\failure_notes.md)
+  none yet. Read every wrong answer and write one line each, for example:  - 00012 [search missed] note
+
+COST: 0.561 cents in all (bot 0.350, judge 0.211); 0.1123 cents and 20.7 s per question
+
+PASS LINES (a score in points out of 100 that must be reached)
+  not set yet. They are set in step 2.9, at the baseline minus 5 points, never at a number you hope for.
