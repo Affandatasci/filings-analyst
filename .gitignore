@@ -33,6 +33,5 @@ results/runs/
 results/attacks/
 data/cases/
 
-results/runs/
-results/attacks/
-data/cases/
+# Notebooks keep their outputs, so they stay out of Git
+*.ipynb

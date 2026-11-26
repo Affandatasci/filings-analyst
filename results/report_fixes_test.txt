@@ -57,9 +57,20 @@ BY SLICE (answer right, and right page found, out of every 100; groups under 4 a
     Logical reasoning                    8 questions   right  62   page found  88
 
 YOUR FAILURE TYPES (results\failure_notes.md)
-  none yet. Read every wrong answer and write one line each, for example:  - 00012 [search missed] note
+   10  search missed
+    7  misread: wrong number
+    2  misread: said not found
+    2  misread: answer differs
+    1  misread: right number, marked wrong
 
 COST: 10.107 cents in all (bot 5.175, judge 4.932); 0.1348 cents and 4.1 s per question
 
 PASS LINES (a score in points out of 100 that must be reached)
-  not set yet. They are set in step 2.9, at the baseline minus 5 points, never at a number you hope for.
+  correct           70.7  line 65.7  ok
+  number_match      69.4  line 64.4  ok
+  found_page        76.0  line 71.0  ok
+  supported         98.7  line 93.7  ok
+  citation_valid    96.0  line 91.0  ok
+  citation_hit      71.2  line 66.2  ok
+  json_shape       100.0  line 95.0  ok
+  length            98.7  line 93.7  ok
